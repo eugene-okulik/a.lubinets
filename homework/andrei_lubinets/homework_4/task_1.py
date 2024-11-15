@@ -35,11 +35,3 @@ my_dict['set'].remove(55)
 # вывод словаря my_dict
 for key, value in my_dict.items():
     print(f"{key} : {value}")
-
-
-
-
-
-
-
-
