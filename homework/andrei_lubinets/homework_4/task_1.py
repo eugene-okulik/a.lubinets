@@ -21,7 +21,7 @@ my_dict['list'].append('Welcome')
 my_dict['list'].pop(1)
 
 # добавил элемент с ключом ('i am a tuple')
-my_dict['dict']['i am a tuple'] = 'i am not a tuple'
+my_dict['dict'][("i am a tuple",)] = 'i am not a tuple'
 
 # удалил значение из ключа 'dict'
 del my_dict['dict']['age']
