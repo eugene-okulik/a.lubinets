@@ -1,5 +1,5 @@
 def decorator_replace(func):
-    def wrapper(first, second, operation):
+    def wrapper(first, second):
         if first == second:
             return func(first, second, '+')
         elif first > second:
@@ -25,7 +25,6 @@ def calc(first, second, operation):
 
 first, second, operation = (int(input("Enter first number: ")),
                             int(input("Enter second number: ")),
-                            input("enter type of operation :")
-)
+                            input("enter type of operation :"))
 
-print(f"Result {calc(first, second, None)}")
+print(f"Result {calc(first, second)}")
