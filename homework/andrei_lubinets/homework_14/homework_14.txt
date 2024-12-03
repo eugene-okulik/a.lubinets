@@ -1,0 +1,66 @@
+#Создайте студента (student)I
+NSERT INTO  students (name, second_name) values ('Andrei', 'Lubinets')
+
+#Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
+INSERT INTO books (title) values ('Грокаем алгоритмы')
+
+INSERT INTO books (title) values ('Простой Python')
+
+Update books SET taken_by_student_id = 3660 where id = 5339
+
+Update books SET taken_by_student_id = 3660 where id = 5340
+
+#Создайте группу (group) и определите своего студента туда
+INSERT INTO `groups` (title,start_date,end_date) values ('QA automation team', '2024-11-20', '2025-01-31')
+
+UPDATE students SET group_id = 2315 WHERE id = 3660
+
+
+#Создайте несколько учебных предметов (subjects)
+INSERT INTO subjets (title) Values ('Техническая механика')
+
+INSERT INTO subjets (title) Values ('СОПРОМАТ')
+
+
+#Создайте по два занятия для каждого предмета (lessons)
+INSERT INTO lessons (title, subject_id) Values ('Статика твердого тела', 3529)
+
+INSERT INTO lessons (title, subject_id) Values ('Сдвиг и кручение', 3529)
+
+INSERT INTO lessons (title, subject_id) Values ('Растяжение-сжатие', 3530)
+
+INSERT INTO lessons (title, subject_id) Values ('Сложное сопротивление', 3530)
+
+
+
+#Поставьте своему студенту оценки (marks) для всех созданных вами занятий
+INSERT INTO marks (value, lesson_id, student_id) Values (4, 6976, 3660)
+
+INSERT INTO marks (value, lesson_id, student_id) Values (5, 6977, 3660)
+
+INSERT INTO marks (value, lesson_id, student_id) Values (3, 6978, 3660)
+
+INSERT INTO marks (value, lesson_id, student_id) Values (2, 6979, 3660)
+
+
+#Все оценки студента
+SELECT value FROM marks WHERE student_id = 3660
+
+#Все книги, которые находятся у студента
+SELECT title FROM books WHERE taken_by_student_id = 3660
+
+#Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов
+(всё одним запросом с использованием Join)
+SELECT * FROM students
+JOIN books
+ON students.id = books.taken_by_student_id
+JOIN `groups`
+ON students.group_id = groups.id
+JOIN marks
+ON students.id = marks.student_id
+JOIN lessons
+ON marks.lesson_id = lessons.id
+JOIN subjets
+ON lessons.subject_id = subjets.id
+WHERE
+students.id = 3660
