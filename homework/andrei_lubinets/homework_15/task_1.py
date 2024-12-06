@@ -109,7 +109,7 @@ students.id = %s
 """
 cursor.execute(select_query, (student_id,))
 data = cursor.fetchall()
-print(f"Все данные по студенты с ID {student_id}:\n{data}")
+print(f"Все данные по студенту с ID {student_id}:\n{data}")
 db.commit()
 
 db.close()
