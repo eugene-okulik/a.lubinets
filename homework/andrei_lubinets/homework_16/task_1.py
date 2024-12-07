@@ -3,7 +3,6 @@ import csv
 import mysql.connector as mysql
 import dotenv
 
-
 bace_path = os.path.dirname(__file__)
 homework_path = os.path.dirname(os.path.dirname(bace_path))
 file_path = os.path.join(homework_path, 'eugene_okulik', 'lesson_16', 'hw_data', 'data.csv')
@@ -40,7 +39,7 @@ cursor.execute(select_query)
 db_data = cursor.fetchall()
 
 no_match = list(filter(lambda x: x not in db_data, csv_data))
-print('Данные не найденые в БД: ')
+print('Данные отсутствующие в БД: ')
 for row in no_match:
     print(row)
 
