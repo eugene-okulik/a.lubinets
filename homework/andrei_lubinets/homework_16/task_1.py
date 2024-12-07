@@ -26,8 +26,7 @@ db = mysql.connect(
 cursor = db.cursor(dictionary=True)
 select_query = """
 SELECT s.name, s.second_name, g.title as "group_title", b.title as "book_title",
-s2.title as "subject_title", l.title as "lesson_title", m.value as "mark_value" 
-FROM students s
+s2.title as "subject_title", l.title as "lesson_title", m.value as "mark_value" FROM students s
 LEFT JOIN `groups` g on g.id = s.group_id
 LEFT JOIN books b on b.taken_by_student_id = s.id
 LEFT JOIN marks m on m.student_id = s.id
