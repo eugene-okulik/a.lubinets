@@ -28,7 +28,7 @@ def post_a_object():
         "name": "My car"
     }
     headers = {'Content-Type': 'application/json'}
-    response = requests.post(f'http://167.172.172.115:52353/object',
+    response = requests.post('http://167.172.172.115:52353/object',
                              json=body,
                              headers=headers
                              )
