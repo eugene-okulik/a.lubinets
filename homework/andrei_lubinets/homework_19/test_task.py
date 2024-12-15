@@ -59,3 +59,11 @@ def test_patch_a_object(new_object):
     response = requests.patch(f'http://167.172.172.115:52353//object/{new_object}', json=body, headers=headers)
     print(f"Object changed: {response.json()}")
     print("after test")
+
+
+def test_delete_a_object(new_object):
+    print("before test")
+    response = requests.delete(f'http://167.172.172.115:52353//object/{new_object}')
+    print(response.text)
+    print(response.status_code)
+    print("after test")
