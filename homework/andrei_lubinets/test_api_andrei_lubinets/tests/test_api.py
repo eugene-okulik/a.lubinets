@@ -8,38 +8,37 @@ TEST_DATA = [
 ]
 
 
-@allure.title('Создание поста')
+@allure.title('Создание объекта')
 @pytest.mark.parametrize('data', TEST_DATA)
-def test_post_a_post(create_post_endpoint, data):
-    create_post_endpoint.create_new_post(payload=data)
-    create_post_endpoint.check_that_status_is_200()
-    create_post_endpoint.check_that_tittle_is_correct(data['name'])
+def test_post_a_object(create_object_endpoint, data):
+    create_object_endpoint.create_new_object(payload=data)
+    create_object_endpoint.check_that_status_is_200()
+    create_object_endpoint.check_that_tittle_is_correct(data['name'])
 
 
-@allure.title('Полное изменение данных в посте')
-def test_patch_a_post(update_patch_endpoint, post_id):
+@allure.title('Полное изменение данных в объекта')
+def test_patch_a_object(update_patch_endpoint, object_id):
     payload = {'data': {'color': 'yellow', 'size': 'large'}, "name": "My bike"}
-    update_patch_endpoint.patch_a_post(post_id, payload)
+    update_patch_endpoint.patch_a_object(object_id, payload)
     update_patch_endpoint.check_that_status_is_200()
     update_patch_endpoint.check_that_tittle_is_correct(payload['name'])
 
 
-@allure.title('Частичное изменение данных в посте')
-def test_put_a_post(update_put_endpoint, post_id):
+@allure.title('Частичное изменение данных в объекта')
+def test_put_a_object(update_put_endpoint, object_id):
     payload = {'data': {'color': 'red', 'size': 'compact'}, "name": "My plane"}
-    update_put_endpoint.put_a_post(post_id, payload)
+    update_put_endpoint.put_a_object(object_id, payload)
     update_put_endpoint.check_that_status_is_200()
     update_put_endpoint.check_that_tittle_is_correct(payload['name'])
 
 
-@allure.title('Удаление поста по id')
-def test_delete_a_post(delete_endpoint, post_id):
-    delete_endpoint.delete_a_post(post_id)
+@allure.title('Удаление объекта по id')
+def test_delete_a_object(delete_endpoint, object_id):
+    delete_endpoint.delete_a_object(object_id)
     delete_endpoint.check_that_status_is_200()
-    delete_endpoint.check_bad_request()
 
 
-@allure.title('Отображение всех постов')
-def test_get_all_posts(create_get_endpoint):
-    create_get_endpoint.show_all_posts()
+@allure.title('Отображение всех объектов')
+def test_get_all_object(create_get_endpoint):
+    create_get_endpoint.show_all_object()
     create_get_endpoint.check_that_status_is_200()

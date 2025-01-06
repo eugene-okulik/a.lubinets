@@ -5,8 +5,8 @@ from endpoits.endpoint import Endpoint
 
 class ApiPatch(Endpoint):
 
-    @allure.step('Partial modification of post data')
-    def patch_a_post(self, post_id, payload, headers=None):
+    @allure.step('Partial modification of object data')
+    def patch_a_object(self, post_id, payload, headers=None):
         headers = headers if headers else self.headers
         self.response = requests.patch(f'{self.url}/{post_id}',
                                        json=payload,

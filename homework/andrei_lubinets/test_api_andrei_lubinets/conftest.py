@@ -7,7 +7,7 @@ from endpoits.api_get import ApiGet
 
 
 @pytest.fixture()
-def create_post_endpoint():
+def create_object_endpoint():
     return ApiPost()
 
 
@@ -27,12 +27,13 @@ def update_put_endpoint():
 
 
 @pytest.fixture()
-def delete_endpoint(create_post_endpoint):
+def delete_endpoint():
     return ApiDelete()
 
 
 @pytest.fixture()
-def post_id(create_post_endpoint):
+def object_id(create_object_endpoint, delete_endpoint):
     payload = {'data': {'color': 'yellow', 'size': 'large'}, "name": "My car"}
-    create_post_endpoint.create_new_post(payload)
-    yield create_post_endpoint.post_id
+    create_object_endpoint.create_new_object(payload)
+    yield create_object_endpoint.object_id
+    delete_endpoint.delete_a_object(object_id)
