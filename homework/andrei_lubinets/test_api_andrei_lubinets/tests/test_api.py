@@ -16,7 +16,7 @@ def test_post_a_object(create_object_endpoint, data):
     create_object_endpoint.check_that_tittle_is_correct(data['name'])
 
 
-@allure.title('Полное изменение данных в объекта')
+@allure.title('Полное изменение данных в объекте')
 def test_patch_a_object(update_patch_endpoint, object_id):
     payload = {'data': {'color': 'yellow', 'size': 'large'}, "name": "My bike"}
     update_patch_endpoint.patch_a_object(object_id, payload)
@@ -24,7 +24,7 @@ def test_patch_a_object(update_patch_endpoint, object_id):
     update_patch_endpoint.check_that_tittle_is_correct(payload['name'])
 
 
-@allure.title('Частичное изменение данных в объекта')
+@allure.title('Частичное изменение данных в объекте')
 def test_put_a_object(update_put_endpoint, object_id):
     payload = {'data': {'color': 'red', 'size': 'compact'}, "name": "My plane"}
     update_put_endpoint.put_a_object(object_id, payload)
@@ -39,6 +39,6 @@ def test_delete_a_object(delete_endpoint, object_id):
 
 
 @allure.title('Отображение всех объектов')
-def test_get_all_object(create_get_endpoint):
+def test_get_all_objects(create_get_endpoint):
     create_get_endpoint.show_all_object()
     create_get_endpoint.check_that_status_is_200()
