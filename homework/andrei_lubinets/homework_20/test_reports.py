@@ -80,7 +80,7 @@ def test_patch_a_object(new_object):
 
 @allure.feature("Posts")
 @allure.story("Manipulate with post")
-@allure.title("Удадение поста")
+@allure.title("Удаление поста")
 def test_delete_a_object(new_object):
     print("before test")
     with allure.step(f"Post with id {new_object} has been deleted"):
